@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+    poke-app:
+        container_name: poke-app
+        build: .
+        command: >
+            sh -c "python manage.py migrate
+            && python manage.py runserver 0.0.0.0:8000"        
+        volumes:
+            - ./src/:/code
+        ports:
+            - 8000:8000
+        environment:
+            - DATABASE_NAME=poke-db
+            - SECRET_KEY=sj%1unk=q=cgga!mga5o(%9j^y#u=(h#a0whc=v^ha$dgzbdhn
+            - ALLOWED_HOSTS=*
+            - DEBUG=True
