@@ -49,7 +49,7 @@ docker exec -it poke-app sh
 luego
 
 ```bash
-python manage.py evolution_chain --id {id_evolution_chain}
+python manage.py evolution_chain id {id_evolution_chain}
 ```
 
 ejemplo 

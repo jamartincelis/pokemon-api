@@ -41,7 +41,6 @@ def get_pokemon_id(poke_object={}, is_evolution=False):
         return get_id(poke_object['chain']['species']['url'])
     
 def get_id(url=""):
-    # chequear si url es valida
     parsed_url = check_url(url)
     return parsed_url.path.split('/')[-2]
 
@@ -57,7 +56,6 @@ def get_pokemon_evolutions(evolution_chain={}):
     for evolution in evolution_chain['chain']['evolves_to']:
         evolutions.append(add_evolution(evolution))
         if evolution['evolves_to']:
-            print(evolution['evolves_to'])
             evolutions.append(add_evolution(evolution['evolves_to'][0]))
 
     return evolutions
@@ -79,13 +77,10 @@ def get_evolutions(id_evolution_chain=None):
 def get_pokemon(id_evolution_chain=None):
     pokemon_dict = {}
     pokemon_dict = get_evolutions(id_evolution_chain)
-    print(pokemon_dict)
     pokemon_id = pokemon_dict['pokemon_id']
     pokemon_detail = api_pokemon(pokemon_id)
-    print("*"*20)
     pokemon_dict['height'] = pokemon_detail['height']
     pokemon_dict['weight'] = pokemon_detail['weight']
     pokemon_dict['stats'] = pokemon_detail['stats']
-    print(pokemon_dict)
     
     return pokemon_dict

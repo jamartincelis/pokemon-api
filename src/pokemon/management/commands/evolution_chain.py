@@ -1,4 +1,5 @@
 import imp
+from types import NoneType
 from django.core.management.base import BaseCommand, CommandError
 from  ._helpers import get_pokemon
 from pokemon.models import Pokemon
@@ -9,12 +10,12 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument(
-            '--id', help='Id of the pokemon evolution chain', type=int, default=67)
+            '--id', help='Id of the pokemon evolution chain', type=int)
 
     def handle(self, *args, **options):
-
-        print(options['id'])
-        id_evolution_chain = options['id']
+        if options['id'] is None:
+            return self.stdout.write(self.style.WARNING(f"The evolution chain 'id' it's required."))
+        id_evolution_chain = int(options['id'])
         pokemon_dict = get_pokemon(id_evolution_chain)
 
         pokemon = Pokemon(

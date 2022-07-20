@@ -5,6 +5,7 @@ MODULE_SETTINGS = {
     'POKEMON_NAME_EXAMPLE': 'rattata',
     'FACTORIES_DIR': './pokemon/tests/factories',
     'POKEMON_JSON_EXAMPLE': 'pokemon_ratata_details.json',
+    'POKEMON_SERIALIZER_EXAMPLE': 'pokemon_ratata_serializer.json',
     'JSON_DIR': './pokemon/tests/json'
 }
 

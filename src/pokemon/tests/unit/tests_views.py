@@ -1,18 +1,12 @@
 from pokemon.tests.factories.pokemon_factories import RatataFactory
 from django.urls import reverse
 from rest_framework.test import APITestCase
-from pokemon.models import Pokemon
 from rest_framework import status
 
 class PokemonDetailTest(APITestCase):
 
     def setUp(self):
-        factory = RatataFactory()
-
-        self.pokemon = Pokemon.objects.create( # create pokemon in database
-            name=factory.name, 
-            details=factory.details
-        )
+        RatataFactory()
 
     def test_if_pokemon_exists(self):
 
